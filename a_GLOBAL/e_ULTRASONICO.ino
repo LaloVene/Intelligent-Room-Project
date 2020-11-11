@@ -10,9 +10,10 @@ void ultrasonico(){
    t = pulseIn(Echo, HIGH); //obtenemos el ancho del pulso
    d = t/59;             //escalamos el tiempo a una distancia en cm
 
-   if (d <= 30 && d <= pastD - 5){
+   if (d <= 30){
     digitalWrite(ledUS, HIGH);
-   }else if (d > 30 && d >= pastD + 5){
+    delay(2000);
+   }else if (d > 30){
     digitalWrite(ledUS, LOW);
    }
 
