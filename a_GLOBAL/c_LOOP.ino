@@ -8,5 +8,8 @@ void loop() {
       alarm.disarm();
     }
     alarm.loop(); // Alarm Loop
-
+  //Ultrasonico
+  ultrasonico();
+  //Fotoresistencia
+  fotoresistencia();
 }
