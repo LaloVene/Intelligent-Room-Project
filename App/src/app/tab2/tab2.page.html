@@ -1,0 +1,143 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row class="header">
+
+        <ion-col >
+          <ion-title size="large">Hi, <span>Lalo</span></ion-title>
+        </ion-col>
+
+        <ion-col size="1">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true">
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col size="7">
+        <ion-card class="main-card">
+          <ion-card-content>
+            <ion-icon name="sunny-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header>
+            <ion-card-subtitle>Monday 18, 2020</ion-card-subtitle>
+            <ion-card-title>Prec: 18%</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-row>
+          <ion-card class="weather-card">
+            <ion-label>27°C</ion-label>
+            <ion-card-subtitle>Temperature</ion-card-subtitle>
+          </ion-card>
+        </ion-row>
+
+        <ion-row>
+          <ion-card class="weather-card">
+            <ion-label>25°C</ion-label>
+            <ion-card-subtitle>Heat Index</ion-card-subtitle>
+          </ion-card>
+        </ion-row>
+
+        <ion-row>
+          <ion-card class="weather-card">
+            <ion-label>46%</ion-label>
+            <ion-card-subtitle>Humidity</ion-card-subtitle>
+          </ion-card>
+        </ion-row>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-label class="label">Room</ion-label>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col>
+        <ion-card class="icon-card ion-activatable ripple-parent">
+          <ion-card-content class="icon-card">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header> 
+            <ion-card-subtitle>Armed</ion-card-subtitle>
+          </ion-card-header>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col>
+        <ion-card class="icon-card ion-activatable ripple-parent">
+          <ion-card-content class="icon-card">
+            <ion-icon name="key-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header> 
+            <ion-card-subtitle>Lock Door</ion-card-subtitle>
+          </ion-card-header>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col>
+        <ion-card class="icon-card ion-activatable ripple-parent" (click)="onLight()">
+          <ion-card-content class="icon-card">
+            <ion-icon name="bulb-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header> 
+            <ion-card-subtitle>Light</ion-card-subtitle>
+          </ion-card-header>
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-range *ngIf="light" min="0" max="255" value="255" step="1">
+            <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+            <ion-icon slot="end" name="sunny"></ion-icon>
+          </ion-range>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      
+      <ion-col>
+        <ion-card class="icon-card ion-activatable ripple-parent" (click)="onFan()">
+          <ion-card-content class="icon-card">
+            <ion-icon name="snow-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header> 
+            <ion-card-subtitle>Fan</ion-card-subtitle>
+          </ion-card-header>
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-range *ngIf="fan" min="0" max="255" step="30" value="255" snaps color="danger">
+            <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
+            <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
+          </ion-range>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

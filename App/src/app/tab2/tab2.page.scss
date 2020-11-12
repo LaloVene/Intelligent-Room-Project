@@ -1,0 +1,53 @@
+.noMargin {
+    padding: 0;
+    margin:  0;
+}
+.header {
+    padding-right: 1rem;
+    ion-title {
+        span {
+            font-weight: 100;
+        }
+    }
+    ion-icon {
+        font-size: xx-large;
+        padding-bottom: 0.2rem;
+    }
+}
+.main-card {
+    width: 90%;
+    margin: 0.5rem;
+    ion-card-content {
+        text-align: center;
+        ion-icon {
+            font-size: 5rem;
+        }
+    }
+    ion-card-header {
+        padding-top: 0;
+    }
+}
+.weather-card {
+    width: 100%;
+    margin: 0.5rem;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+.label {
+    font-size: xx-large;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+.icon-card {
+    text-align: center;
+    font-size: 4rem;
+    padding: 0.5rem 0;
+    margin: 0.5rem;
+
+    ion-card-content {
+        padding: 0;
+    }
+    ion-card-header {
+        padding: 0;
+    }
+}
