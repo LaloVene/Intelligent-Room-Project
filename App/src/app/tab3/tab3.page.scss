@@ -1,0 +1,48 @@
+.noMargin {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    padding-right: 1rem;
+
+    ion-title {
+        span {
+            font-weight: 100;
+        }
+    }
+
+    ion-icon {
+        font-size: xx-large;
+        padding-bottom: 0.2rem;
+    }
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    ion-avatar {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+.userName {
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.coming-soon {
+    text-align: center;
+    padding: 2rem 0;
+    ion-icon {
+        font-size: 5rem;
+    }
+    .coming-soon-text {
+        padding: 1rem 0;
+        font-size: x-large;
+    }
+}

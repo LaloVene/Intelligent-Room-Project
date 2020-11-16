@@ -1,17 +1,49 @@
-<ion-header [translucent]="true">
+<!-- Header -->
+<ion-header collapse="condense">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-grid>
+      <ion-row class="header">
+
+        <ion-col >
+          <ion-title size="large">Hi, <span>Lalo</span></ion-title>
+        </ion-col>
+
+        <ion-col size="1">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="avatar">
+    <ion-avatar>
+      <img src="../../assets/user.svg">
+    </ion-avatar>
+  </div>
+
+  <div class="userName">
+    <ion-label>Lalo Venegas</ion-label>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Settings</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="coming-soon">
+      <div>
+        <ion-icon name="color-wand-outline"></ion-icon>
+      </div>
+
+      <div class="coming-soon-text">
+        <ion-label>Coming Soon</ion-label>
+      </div>
+      
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

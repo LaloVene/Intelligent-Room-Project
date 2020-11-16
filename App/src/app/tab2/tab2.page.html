@@ -1,11 +1,4 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
+<!-- Header -->
 <ion-header collapse="condense">
   <ion-toolbar>
     <ion-grid>
@@ -24,25 +17,27 @@
   </ion-toolbar>
 </ion-header> 
 
+<!-- Content -->
 <ion-content [fullscreen]="true">
-
-  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
   <ion-grid>
 
+    <!-- Clima Widgets -->
     <ion-row>
 
+      <!-- Main Weather -->
       <ion-col size="7">
         <ion-card class="main-card">
           <ion-card-content>
-            <ion-icon name="sunny-outline"></ion-icon>
+            <ion-icon name={{weatherIcon}}></ion-icon>
           </ion-card-content>
           <ion-card-header>
             <ion-card-subtitle>Monday 18, 2020</ion-card-subtitle>
-            <ion-card-title>Prec: 18%</ion-card-title>
+            <ion-card-title>Prec: {{precProb}}%</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
 
+      <!-- Weather Conditions -->
       <ion-col>
         <ion-row>
           <ion-card class="weather-card">
@@ -68,42 +63,44 @@
 
     </ion-row>
 
+    <!-- Label -->
     <ion-row>
       <ion-label class="label">Room</ion-label>
     </ion-row>
 
-    <ion-row>
+    <!-- Control Buttons -->
 
+    <ion-row>
+      <!-- Armed -->
       <ion-col>
-        <ion-card class="icon-card ion-activatable ripple-parent">
+        <ion-card class="icon-card ion-activatable ripple-parent" color="{{armedColor}}" (click)="onArmed()">
           <ion-card-content class="icon-card">
-            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-icon name={{armedIcon}}></ion-icon>
           </ion-card-content>
           <ion-card-header> 
-            <ion-card-subtitle>Armed</ion-card-subtitle>
+            <ion-card-subtitle>{{armedText}}</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
         </ion-card>
       </ion-col>
-      
+      <!-- Door -->
       <ion-col>
-        <ion-card class="icon-card ion-activatable ripple-parent">
+        <ion-card class="icon-card ion-activatable ripple-parent" color={{doorColor}} (click)="onDoor()">
           <ion-card-content class="icon-card">
             <ion-icon name="key-outline"></ion-icon>
           </ion-card-content>
           <ion-card-header> 
-            <ion-card-subtitle>Lock Door</ion-card-subtitle>
+            <ion-card-subtitle>{{doorText}}</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
         </ion-card>
       </ion-col>
-
     </ion-row>
 
     <ion-row>
-
+      <!-- Light -->
       <ion-col>
-        <ion-card class="icon-card ion-activatable ripple-parent" (click)="onLight()">
+        <ion-card class="icon-card ion-activatable ripple-parent" color="{{lightColor}}" (click)="onLight()">
           <ion-card-content class="icon-card">
             <ion-icon name="bulb-outline"></ion-icon>
           </ion-card-content>
@@ -111,19 +108,18 @@
             <ion-card-subtitle>Light</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
-          <ion-range *ngIf="light" min="0" max="255" value="255" step="1">
+          <ion-range *ngIf="light" min="0" max="255" value="255" step="1" (ionChange)="onLightChange($event)">
             <ion-icon size="small" slot="start" name="sunny"></ion-icon>
             <ion-icon slot="end" name="sunny"></ion-icon>
           </ion-range>
         </ion-card>
       </ion-col>
-
     </ion-row>
 
     <ion-row>
-      
+      <!-- Fan -->
       <ion-col>
-        <ion-card class="icon-card ion-activatable ripple-parent" (click)="onFan()">
+        <ion-card class="icon-card ion-activatable ripple-parent" color={{fanColor}} (click)="onFan()">
           <ion-card-content class="icon-card">
             <ion-icon name="snow-outline"></ion-icon>
           </ion-card-content>
@@ -131,13 +127,28 @@
             <ion-card-subtitle>Fan</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
-          <ion-range *ngIf="fan" min="0" max="255" step="30" value="255" snaps color="danger">
-            <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
-            <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
+          <ion-range *ngIf="fan" min="0" max="255" step="30" value="255" snaps color="tertiary" (ionChange)="onFanChange($event)">
+            <ion-icon slot="start" size="small" name="thermometer"></ion-icon>
+            <ion-icon slot="end" name="thermometer"></ion-icon>
           </ion-range>
         </ion-card>
       </ion-col>
-
     </ion-row>
+
+    <ion-row>
+      <!-- Window -->
+      <ion-col size="6">
+        <ion-card class="icon-card ion-activatable ripple-parent" color={{windowColor}} (click)="onWindow()">
+          <ion-card-content class="icon-card">
+            <ion-icon name="image-outline"></ion-icon>
+          </ion-card-content>
+          <ion-card-header> 
+            <ion-card-subtitle>{{windowText}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 </ion-content>

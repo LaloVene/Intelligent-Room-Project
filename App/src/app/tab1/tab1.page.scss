@@ -1,0 +1,26 @@
+.noMargin {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    padding-right: 1rem;
+
+    ion-title {
+        span {
+            font-weight: 100;
+        }
+    }
+
+    ion-icon {
+        font-size: xx-large;
+        padding-bottom: 0.2rem;
+    }
+}
+
+.dash-card {
+    text-align: center;
+    ion-card-title {
+        font-size: xx-large;
+    }
+}
