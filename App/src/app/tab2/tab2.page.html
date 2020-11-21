@@ -31,7 +31,7 @@
             <ion-icon name={{weatherIcon}}></ion-icon>
           </ion-card-content>
           <ion-card-header>
-            <ion-card-subtitle>Monday 18, 2020</ion-card-subtitle>
+            <ion-card-subtitle>{{weekday}} {{day}}, {{year}}</ion-card-subtitle>
             <ion-card-title>Prec: {{precProb}}%</ion-card-title>
           </ion-card-header>
         </ion-card>
@@ -41,21 +41,21 @@
       <ion-col>
         <ion-row>
           <ion-card class="weather-card">
-            <ion-label>27°C</ion-label>
+            <ion-label>{{temperatura}}°C</ion-label>
             <ion-card-subtitle>Temperature</ion-card-subtitle>
           </ion-card>
         </ion-row>
 
         <ion-row>
           <ion-card class="weather-card">
-            <ion-label>25°C</ion-label>
+            <ion-label>{{sensacion}}°C</ion-label>
             <ion-card-subtitle>Heat Index</ion-card-subtitle>
           </ion-card>
         </ion-row>
 
         <ion-row>
           <ion-card class="weather-card">
-            <ion-label>46%</ion-label>
+            <ion-label>{{humedad}}%</ion-label>
             <ion-card-subtitle>Humidity</ion-card-subtitle>
           </ion-card>
         </ion-row>
@@ -108,7 +108,7 @@
             <ion-card-subtitle>Light</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
-          <ion-range *ngIf="light" min="0" max="255" value="255" step="1" (ionChange)="onLightChange($event)">
+          <ion-range *ngIf="light" min="0" max="255" value="{{lightIntensity}}" step="1" (ionChange)="onLightChange($event)">
             <ion-icon size="small" slot="start" name="sunny"></ion-icon>
             <ion-icon slot="end" name="sunny"></ion-icon>
           </ion-range>
@@ -127,7 +127,7 @@
             <ion-card-subtitle>Fan</ion-card-subtitle>
           </ion-card-header>
           <ion-ripple-effect></ion-ripple-effect>
-          <ion-range *ngIf="fan" min="0" max="255" step="30" value="255" snaps color="tertiary" (ionChange)="onFanChange($event)">
+          <ion-range *ngIf="fan" min="0" max="255" step="30" value="{{fanSpeed}}" snaps color="tertiary" (ionChange)="onFanChange($event)">
             <ion-icon slot="start" size="small" name="thermometer"></ion-icon>
             <ion-icon slot="end" name="thermometer"></ion-icon>
           </ion-range>
