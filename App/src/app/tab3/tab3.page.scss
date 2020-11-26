@@ -7,6 +7,7 @@
     padding-right: 1rem;
 
     ion-title {
+        font-size: xx-large;
         span {
             font-weight: 100;
         }
@@ -44,5 +45,14 @@
     .coming-soon-text {
         padding: 1rem 0;
         font-size: x-large;
+    }
+}
+
+.dark-mode {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    ion-label {
+        font-size: large;
     }
 }

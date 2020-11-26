@@ -54,7 +54,25 @@ export class Tab2Page {
   fanSpeed: any = 0;
   fanColor: string;
 
-  constructor(public firebase: FirebaseService) {}
+  dark: boolean = true;
+
+  constructor(public firebase: FirebaseService) {
+    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
+    this.dark = prefersColor.matches;
+    this.toggleDarkMode();
+
+    prefersColor.addEventListener(
+      'change',
+      mediaQuery => {
+        this.dark = mediaQuery.matches;
+        this.toggleDarkMode();
+      }
+    );
+  }
+
+  toggleDarkMode() {
+    document.body.classList.toggle('dark', this.dark);
+  }
   
   ngOnInit() {
 

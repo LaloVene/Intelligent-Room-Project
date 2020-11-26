@@ -1,5 +1,5 @@
 <!-- Header -->
-<ion-header collapse="condense">
+<ion-header>
   <ion-toolbar>
     <ion-grid>
       <ion-row class="header">
@@ -21,15 +21,36 @@
   <ion-list-header>Dashboard</ion-list-header>
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Registered weather</ion-card-subtitle>
-      <ion-card-title>Today</ion-card-title>
+      <ion-card-title>Today's Weather</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <canvas #barChart height="250"></canvas>
     </ion-card-content>
   </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Energy Saved</ion-card-title>
+      <ion-card-subtitle>Per Month (kW)</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutChart height="150"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Energy Consumption</ion-card-title>
+      <ion-card-subtitle>Per Year (kW)</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #areaChart height="250"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+
   <ion-list-header>More</ion-list-header>
+
   <ion-grid>
     <ion-row>
       <ion-card class="dash-card">

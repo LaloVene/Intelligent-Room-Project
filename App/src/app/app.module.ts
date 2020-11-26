@@ -13,6 +13,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCf3_k_yq2rj_xGZ_TCGST-BhlB_WNNAm4",
     authDomain: "room-app-dc3af.firebaseapp.com",
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    
   ],
   providers: [
     StatusBar,
