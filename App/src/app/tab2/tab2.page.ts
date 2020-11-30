@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import {formatDate} from '@angular/common';
+import { Observable } from 'rxjs';
 
+
+import * as tf from '@tensorflow/tfjs'
 import { FirebaseService } from '../services/firebase.service'
+import { WeatherService } from '../services/weather.service'
 
 
 @Component({
@@ -14,6 +18,7 @@ export class Tab2Page {
   myDate: any = new Date();
 
   day: string;
+  month: string;
   year: string;
   weekday: string;
   weekdayList: string[] = [
@@ -31,7 +36,6 @@ export class Tab2Page {
   temperatura: any;
   sensacion: any;
   humedad: any;
-  precProb: number = 18;
   
   armed: any = false;
   armedText: string;
@@ -56,7 +60,8 @@ export class Tab2Page {
 
   dark: boolean = true;
 
-  constructor(public firebase: FirebaseService) {
+  constructor(public firebase: FirebaseService,
+              public weather: WeatherService) {
     const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
     this.dark = prefersColor.matches;
     this.toggleDarkMode();
@@ -73,14 +78,26 @@ export class Tab2Page {
   toggleDarkMode() {
     document.body.classList.toggle('dark', this.dark);
   }
+
+  model: tf.LayersModel;
+  prediction: any;
+
+  TempHighF: any;
+  TempAvgF: any;
+  TempLowF: any;
+  TempHighC: any;
+  TempAvgC: any;
+  TempLowC: any;
+  HumidityAvgPercent: any;
+  SeaLevelPressureAvgInches: any;
+  SeaLevelPressureAvgMmHg: any;
+  WindAvgMPH: any;
   
   ngOnInit() {
-
+    this.month = formatDate(this.myDate, 'MM', 'en');
     this.day = formatDate(this.myDate, 'dd', 'en');
     this.year = formatDate(this.myDate, 'yyyy', 'en');
     this.weekday = this.weekdayList[this.myDate.getDay()];
-
-    this.precProb >= 50 ? this.weatherIcon = "rainy-outline" : this.weatherIcon = "sunny-outline";
 
     this.getTemp();
     this.getSensa();
@@ -92,7 +109,47 @@ export class Tab2Page {
     this.getWindow();
     this.getDoor();
 
+    this.getWeather();
   }
+
+  // LOAD PRETRAINED KERAS MODEL //
+
+  async getWeather() {
+    this.weather.getCurrentWeather('guadalajara').subscribe((res: any) => {
+      this.TempHighC = res.main.temp_max - 273.15;
+      this.TempAvgC = res.main.temp - 273.15;
+      this.TempLowC = res.main.temp_min - 273.15;
+      this.TempHighF = this.TempHighC * 9/5 + 32;
+      this.TempAvgF = this.TempAvgC * 9/5 + 32;
+      this.TempLowF = this.TempLowC * 9/5 + 32;
+      this.HumidityAvgPercent = res.main.humidity;
+      this.SeaLevelPressureAvgMmHg = res.main.pressure;
+      this.SeaLevelPressureAvgInches = this.SeaLevelPressureAvgMmHg / 24.5;
+      this.WindAvgMPH = res.wind.speed;
+      this.loadModel();
+    })
+  }
+
+  async loadModel() {
+    this.model = await tf.loadLayersModel('../../assets/model.json');
+    this.predict();
+  }
+
+  async predict() {
+
+    const pred = await tf.tidy(() => {
+
+      let data = [this.TempHighF, this.TempAvgF, this.TempLowF, this.HumidityAvgPercent, this.SeaLevelPressureAvgInches, this.WindAvgMPH, this.month, parseInt(this.day), this.TempHighC, this.TempAvgC, this.TempLowC, this.SeaLevelPressureAvgMmHg]
+      // Make and format the predications
+      const output = this.model.predict(tf.tensor2d([data], [1, 12])) as any;
+      this.prediction = Array.from(output.dataSync())[0];
+      console.log(this.prediction);
+      this.prediction <= 0 ? this.prediction = 0 : {};
+      this.prediction >= 0.5 ? this.weatherIcon = "rainy-outline" : this.weatherIcon = "sunny-outline";
+    });
+
+  }
+
 
   getTemp() {
     this.firebase.getTemp()

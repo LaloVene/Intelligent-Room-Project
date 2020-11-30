@@ -32,7 +32,7 @@
           </ion-card-content>
           <ion-card-header>
             <ion-card-subtitle>{{weekday}} {{day}}, {{year}}</ion-card-subtitle>
-            <ion-card-title>Prec: {{precProb}}%</ion-card-title>
+            <ion-card-title>Prec: {{(prediction*100).toFixed(2)}}%</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
