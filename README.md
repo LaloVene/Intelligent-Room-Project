@@ -6,7 +6,7 @@ Won first place in the Campus Engineering Expo by developing a mobile app which 
 
 ![image](https://user-images.githubusercontent.com/54692916/114967839-cc6e3b00-9e3a-11eb-9e53-931e95580091.png)
 
-![image](https://user-images.githubusercontent.com/54692916/133336220-3df392b6-ff28-498e-b0a5-b795ea1e98b0.png)
+![image](https://user-images.githubusercontent.com/54692916/133336327-fddf1199-5542-4418-a0d8-a6a8ca5bb63b.png)
 
 ![image](https://user-images.githubusercontent.com/54692916/114967906-e90a7300-9e3a-11eb-86f5-ff71dd2437b5.png)
 
